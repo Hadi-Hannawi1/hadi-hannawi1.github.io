@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Hannawi - Full-Stack Web Developer & AI Automation Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #1f2937;
+            background: white;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background: white;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        .header h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .title {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 0.75rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            font-size: 9.5pt;
+            color: #6b7280;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .contact-info a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 1.25rem;
+        }
+        
+        .section-title {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid #e5e7eb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Summary */
+        .summary {
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #374151;
+            text-align: justify;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-category-title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 0.25rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .skill-tag {
+            font-size: 8.5pt;
+            padding: 0.15rem 0.4rem;
+            background: #eff6ff;
+            color: #1e40af;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        /* Experience & Projects */
+        .item {
+            margin-bottom: 1rem;
+        }
+        
+        .item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .item-meta {
+            font-size: 9pt;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .item-subtitle {
+            font-size: 9.5pt;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-description {
+            font-size: 9.5pt;
+            color: #4b5563;
+            margin-bottom: 0.25rem;
+            line-height: 1.5;
+        }
+        
+        .item-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 9.5pt;
+        }
+        
+        .item-list li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.15rem;
+            color: #4b5563;
+            line-height: 1.4;
+        }
+        
+        .item-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        
+        .item-tech {
+            font-size: 8.5pt;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
+        
+        /* Education */
+        .education-item {
+            margin-bottom: 0.75rem;
+        }
+        
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Languages */
+        .languages {
+            display: flex;
+            gap: 2rem;
+            font-size: 10pt;
+        }
+        
+        .language-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .language-name {
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .language-level {
+            font-size: 9pt;
+            color: #6b7280;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .resume-container {
+                padding: 0.25in;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @page {
+            margin: 0.5in;
+            size: letter;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>HADI HANNAWI</h1>
+            <div class="title">Full-Stack Web Developer & AI Integration Specialist</div>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:hadi.hennawi2005@gmail.com">hadi.hennawi2005@gmail.com</a></span>
+                <span>📱 +33 6 68 83 91 97</span>
+                <span>📍 Paris Region, France</span>
+                <span>🌐 <a href="https://hadi-hannawi1.github.io">hadi-hannawi1.github.io</a></span>
+                <span>🔗 <a href="https://github.com/hadi-hannawi1">github.com/hadi-hannawi1</a></span>
+            </div>
+        </div>
+        
+        <!-- Professional Summary -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <div class="summary">
+                Freelance full-stack web developer and AI automation specialist currently in 3rd year of Computer Engineering at Efrei Paris. Specializing in production-ready web applications using React, Node.js, and TypeScript, with expertise in designing intelligent automation workflows using n8n and AI APIs. Fluent in Arabic, French, and English, with proven ability to understand business problems and deliver clean, scalable, technical solutions that drive growth and efficiency.
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Frontend Development</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-category-title">Backend Development</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Hono</span>
+                        <span class="skill-tag">Cloudflare Workers</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-category-title">AI & Automation</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">n8n</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">AI Prompting</span>
+                        <span class="skill-tag">Workflow Automation</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-category-title">Development Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Projects -->
+        <div class="section">
+            <div class="section-title">Featured Projects</div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">ContentAI Pro - AI Content Generation Platform</div>
+                    <div class="item-meta">2024</div>
+                </div>
+                <div class="item-subtitle">Full-Stack AI Integration • Production Deployment</div>
+                <div class="item-description">
+                    Full-stack AI content generation platform powered by OpenAI, built on Cloudflare Workers for edge performance and global scalability.
+                </div>
+                <ul class="item-list">
+                    <li>Serverless architecture with edge computing for optimal performance</li>
+                    <li>Real-time AI content generation with customizable tone and style</li>
+                    <li>TypeScript backend with Hono framework, Tailwind CSS frontend</li>
+                </ul>
+                <div class="item-tech">Tech: Hono, Cloudflare Workers, OpenAI API, TypeScript, Tailwind CSS</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">AI-Powered Email Automation System</div>
+                    <div class="item-meta">2024</div>
+                </div>
+                <div class="item-subtitle">AI Automation • Business Process Optimization</div>
+                <div class="item-description">
+                    Intelligent email automation system using Google Gemini AI to analyze customer inquiries and generate personalized responses.
+                </div>
+                <ul class="item-list">
+                    <li>Reduced response time by 80% through automated routine inquiries</li>
+                    <li>Maintained consistent, professional tone across all communications</li>
+                    <li>Integrated seamlessly with existing email systems via webhooks</li>
+                </ul>
+                <div class="item-tech">Tech: n8n, Google Gemini AI, Webhooks, Email APIs</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Digital Growth Studio - Business Landing Page</div>
+                    <div class="item-meta">2024</div>
+                </div>
+                <div class="item-subtitle">Web Development • Performance Optimization</div>
+                <div class="item-description">
+                    Modern, conversion-optimized landing page with 98 Lighthouse Performance Score, built with vanilla JavaScript for maximum performance.
+                </div>
+                <ul class="item-list">
+                    <li>Fully responsive across all devices with mobile-first design</li>
+                    <li>SEO optimized structure with integrated contact form</li>
+                    <li>Zero dependencies for fast loading times and minimal footprint</li>
+                </ul>
+                <div class="item-tech">Tech: HTML5, CSS3, JavaScript, Responsive Design</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Smart Form Processor - Multi-Step Inquiry Form</div>
+                    <div class="item-meta">2024</div>
+                </div>
+                <div class="item-subtitle">Web Application • UX Enhancement</div>
+                <div class="item-description">
+                    Interactive multi-step form with real-time validation and local data persistence, reducing form abandonment by 60%.
+                </div>
+                <ul class="item-list">
+                    <li>Real-time validation and user feedback at each step</li>
+                    <li>Auto-save functionality with LocalStorage API</li>
+                    <li>Mobile-optimized interface with intuitive progress tracking</li>
+                </ul>
+                <div class="item-tech">Tech: HTML5, CSS3, Vanilla JavaScript, LocalStorage</div>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="education-item">
+                <div class="item-header">
+                    <div class="item-title">Efrei Paris</div>
+                    <div class="item-meta">2023 - Present</div>
+                </div>
+                <div class="item-subtitle">Integrated Preparatory Program in Computer Science (Currently in 3rd Year)</div>
+                <div class="item-description">
+                    Focusing on computer engineering fundamentals, advanced programming, algorithms, data structures, and software development methodologies.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Languages -->
+        <div class="section">
+            <div class="section-title">Languages</div>
+            <div class="languages">
+                <div class="language-item">
+                    <span class="language-name">Arabic</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">French</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Native</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Skills -->
+        <div class="section">
+            <div class="section-title">Professional Skills</div>
+            <div class="skill-tags">
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Communication</span>
+                <span class="skill-tag">Teamwork & Collaboration</span>
+                <span class="skill-tag">Client Relations</span>
+                <span class="skill-tag">Remote Work</span>
+                <span class="skill-tag">Time Management</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
