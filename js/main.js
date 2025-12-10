@@ -278,15 +278,14 @@ class ContactForm {
     init() {
         if (!this.form) return;
         
-        this.submitButton = this.form.querySelector('.btn-submit');
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        // ✅ COMPLETELY DISABLED: Let form submit naturally to FormSubmit.co
+        // The form action points to FormSubmit.co which handles everything
+        // HTML5 validation handles field validation automatically
+        // NO JavaScript intervention - form submits naturally on button click
         
-        // Real-time validation
-        const inputs = this.form.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
-            input.addEventListener('input', () => this.clearFieldError(input));
-        });
+        console.log('✅ ContactForm: Native HTML form submission enabled for FormSubmit.co');
+        
+        // No event listeners attached - form works 100% natively
     }
     
     validateField(field) {
