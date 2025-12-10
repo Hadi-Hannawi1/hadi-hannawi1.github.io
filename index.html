@@ -34,6 +34,8 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Performance Optimizations - CRITICAL for 60fps scrolling -->
+    <link rel="stylesheet" href="css/performance-optimizations.css">
 </head>
 <body>
 
@@ -238,7 +240,7 @@
                 <!-- Project 1: AI Email Automation -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
-                        <img src="images/projects/project-1-main.jpg" alt="AI-Powered Email Automation System - n8n Workflow" loading="lazy">
+                        <img src="images/projects/project-1-main.jpg" alt="AI-Powered Email Automation System - n8n Workflow" width="800" height="450" loading="eager" decoding="async">
                         <div class="project-overlay">
                             <a href="https://github.com/hadi-hannawi1/portfolio-projects#n8n-email-automation" target="_blank" rel="noopener" class="project-link">
                                 <i class="fas fa-book"></i> View Documentation
@@ -289,7 +291,7 @@
                 <!-- Project 2: Business Landing Page -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                        <img src="images/projects/project-2-main.jpg" alt="Digital Growth Studio - Business Landing Page" loading="lazy">
+                        <img src="images/projects/project-2-main.jpg" alt="Digital Growth Studio - Business Landing Page" width="800" height="450" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <a href="https://hadi-hannawi1.github.io/portfolio-projects/business-landing/" target="_blank" rel="noopener" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> View Live Demo
@@ -342,7 +344,7 @@
                 <!-- Project 3: ContentAI Pro -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-image">
-                        <img src="images/projects/project-3-main.jpg" alt="ContentAI Pro - AI Content Generation Platform" loading="lazy">
+                        <img src="images/projects/project-3-main.jpg" alt="ContentAI Pro - AI Content Generation Platform" width="800" height="450" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <a href="https://3000-ikko0pkvrhl772qsfwipf-cbeee0f9.sandbox.novita.ai/static/index.html" target="_blank" rel="noopener" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> View Live Demo
@@ -396,7 +398,7 @@
                 <!-- Project 4: Smart Form Processor -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="project-image">
-                        <img src="images/projects/project-4-main.jpg" alt="Smart Form Processor - Multi-Step Inquiry Form" loading="lazy">
+                        <img src="images/projects/project-4-main.jpg" alt="Smart Form Processor - Multi-Step Inquiry Form" width="800" height="450" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <a href="https://hadi-hannawi1.github.io/portfolio-projects/smart-form/webapp/" target="_blank" rel="noopener" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> View Live Demo
@@ -449,7 +451,7 @@
                 <!-- Project 5: Restaurant Website -->
                 <article class="project-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="project-image">
-                        <img src="images/projects/project-5-main.jpg" alt="Restaurant Website - Interactive Menu System" loading="lazy">
+                        <img src="images/projects/project-5-main.jpg" alt="Restaurant Website - Interactive Menu System" width="800" height="450" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <a href="https://hadi-hannawi1.github.io/portfolio-projects/restaurant-website/" target="_blank" rel="noopener" class="project-link">
                                 <i class="fas fa-external-link-alt"></i> View Live Demo
@@ -871,47 +873,40 @@
                 <!-- Contact Form -->
                 <div class="contact-form-wrapper" data-aos="fade-left">
                     <form id="contactForm" class="contact-form" action="https://formsubmit.co/hadi.hennawi2005@gmail.com" method="POST">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+                        <!-- FormSubmit Configuration (DO NOT REMOVE) -->
+                        <input type="hidden" name="_subject" value="New Portfolio Contact - from hadi-hannawi1.github.io">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="text" name="_honey" style="display:none">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <input type="hidden" name="_next" value="https://hadi-hannawi1.github.io/thank-you.html">
                         
                         <div class="form-group">
                             <label for="name">Your Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                            <input type="text" id="name" name="name" class="form-control" required minlength="2" placeholder="Your Full Name">
                             <span class="form-error" id="nameError"></span>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Your Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="your.email@example.com">
                             <span class="form-error" id="emailError"></span>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
+                            <input type="text" id="subject" name="subject" class="form-control" required minlength="3" placeholder="What's this about?">
                             <span class="form-error" id="subjectError"></span>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Your Message *</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project..."></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="6" required minlength="10" placeholder="Tell me about your project..."></textarea>
                             <span class="form-error" id="messageError"></span>
                         </div>
                         
                         <button type="submit" class="btn btn-primary btn-large btn-submit">
-                            <span class="btn-text">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </span>
-                            <span class="btn-loading" style="display: none;">
-                                <i class="fas fa-spinner fa-spin"></i> Sending...
-                            </span>
+                            <i class="fas fa-paper-plane"></i> Let's Work Together
                         </button>
-                        
-                        <div class="form-status" id="formStatus"></div>
                     </form>
                 </div>
                 
@@ -1025,7 +1020,9 @@
     </div>
 
     <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- Performance Enhancements - Load FIRST for immediate optimization -->
+<script src="js/performance-enhancements.js"></script>
+<script src="js/main.js"></script>
     <script>
         // Simple modal functionality for n8n documentation
         document.querySelectorAll('a[href="#n8n-documentation"]').forEach(link => {
