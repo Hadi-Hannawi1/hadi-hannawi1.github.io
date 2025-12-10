@@ -1,0 +1,283 @@
+/* ===================================
+   CRITICAL PERFORMANCE OPTIMIZATIONS
+   Fixes 2-second scroll lag
+   =================================== */
+
+/* ===================================
+   1. GPU ACCELERATION FOR ANIMATED ELEMENTS
+   =================================== */
+
+/* Force GPU layers for smooth animations */
+.project-card,
+.hero-content,
+.section-header,
+[data-aos],
+.btn,
+.skill-card,
+.stat-number,
+.nav-container {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Remove will-change after animation completes */
+.aos-animate {
+    will-change: auto;
+}
+
+/* ===================================
+   2. OPTIMIZED IMAGE RENDERING
+   =================================== */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Prevent layout shift for lazy-loaded images */
+img[loading="lazy"] {
+    content-visibility: auto;
+}
+
+/* ===================================
+   3. REDUCE EXPENSIVE CSS OPERATIONS
+   =================================== */
+
+/* Optimize box-shadows (keep them light) */
+.project-card {
+    /* Original heavy shadow replaced with lighter version */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.project-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-4px);
+}
+
+/* ===================================
+   4. CONTENT VISIBILITY FOR OFF-SCREEN ELEMENTS
+   =================================== */
+
+/* Tell browser to skip rendering off-screen content */
+.project-card:not(.aos-animate) {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+}
+
+.skill-card:not(.visible) {
+    content-visibility: auto;
+    contain-intrinsic-size: 200px;
+}
+
+/* ===================================
+   5. OPTIMIZED SCROLL BEHAVIOR
+   =================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* For browsers that support it, use instant scrolling on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===================================
+   6. OPTIMIZE TRANSITIONS
+   =================================== */
+
+/* Use GPU-accelerated properties only */
+* {
+    /* Replace expensive 'all' transitions with specific properties */
+    transition-property: transform, opacity, color, background-color, border-color;
+}
+
+/* Remove transition from layout-affecting properties */
+.no-layout-transition {
+    transition-property: opacity, transform;
+}
+
+/* ===================================
+   7. PAINT CONTAINMENT
+   =================================== */
+
+/* Isolate paint operations to specific elements */
+.project-card,
+.skill-card,
+.hero-section,
+.section {
+    contain: paint layout;
+}
+
+/* ===================================
+   8. OPTIMIZE HOVER EFFECTS
+   =================================== */
+
+/* Use transform instead of layout properties */
+.btn:hover {
+    transform: translateY(-2px) translateZ(0);
+}
+
+.btn:active {
+    transform: translateY(0) translateZ(0);
+}
+
+/* ===================================
+   9. CRITICAL RENDERING PATH OPTIMIZATION
+   =================================== */
+
+/* Ensure fonts load without blocking render */
+@font-face {
+    font-display: swap;
+}
+
+/* ===================================
+   10. COMPOSITE LAYERS OPTIMIZATION
+   =================================== */
+
+/* Create composite layers for elements that animate frequently */
+.scroll-to-top,
+.nav-container.scrolled,
+.project-overlay {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* ===================================
+   11. REDUCE REPAINTS ON SCROLL
+   =================================== */
+
+/* Fixed positioning elements get their own layer */
+.nav-container,
+.scroll-to-top {
+    position: fixed;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* ===================================
+   12. OPTIMIZE GRADIENT PERFORMANCE
+   =================================== */
+
+/* Simplify complex gradients */
+.hero-section::before {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(139, 92, 246, 0.05));
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* ===================================
+   13. INTERACTION OPTIMIZATION
+   =================================== */
+
+/* Prevent unnecessary repaints on hover */
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ===================================
+   14. TEXT RENDERING OPTIMIZATION
+   =================================== */
+
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+}
+
+/* ===================================
+   15. PREVENT LAYOUT THRASHING
+   =================================== */
+
+/* Use fixed dimensions where possible to prevent reflow */
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* ===================================
+   16. OPTIMIZE ANIMATION TIMING
+   =================================== */
+
+/* Reduce animation duration for better perceived performance */
+[data-aos] {
+    transition-duration: 0.4s !important;
+}
+
+/* ===================================
+   17. CRITICAL CSS FOR ABOVE-THE-FOLD CONTENT
+   =================================== */
+
+/* Ensure hero section renders immediately */
+.hero-section {
+    contain: layout style paint;
+    will-change: auto;
+}
+
+/* ===================================
+   18. MOBILE PERFORMANCE
+   =================================== */
+
+@media (max-width: 768px) {
+    /* Reduce animations on mobile for better performance */
+    [data-aos] {
+        transition-duration: 0.3s !important;
+    }
+    
+    /* Simplify shadows on mobile */
+    .project-card,
+    .skill-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    }
+    
+    /* Disable expensive effects on mobile */
+    .project-card:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    }
+}
+
+/* ===================================
+   19. PREVENT SCROLL JANK
+   =================================== */
+
+/* Passive scroll listeners (handled in JS) */
+/* Ensure no layout-affecting changes during scroll */
+.scrolling * {
+    pointer-events: none;
+}
+
+/* ===================================
+   20. COMPOSITE HINTS
+   =================================== */
+
+/* Hint browser to composite these layers */
+.project-image img,
+.hero-section,
+.section {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
